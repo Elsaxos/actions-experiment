@@ -1,22 +1,24 @@
 name: Workflow testing
 
+
 on:
-  workflow_dispatch:
   push:
-    branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   experimental-great:
     runs-on: ubuntu-latest
 
-steps:
-  - name: Greet the User
-    run: echo "Hello World!"
-  # List all files in the current directory for comparison before and after actions/checkout@v2.
-  - run: ls -l
-  - name: Check out our code
-  - uses: actions/checkout@v2
-  - name: Show directory after checkout
-  - run: ls -l
+    steps:
+      - name: Greet the User
+        run: echo "Hello World!"
+
+      # List all files in the current directory for comparison before and after actions/checkout@v2.
+      - run: ls -l
+
+      - name: Check out our code
+        uses: actions/checkout@v2
+
+      - name: Show directory after checkout
+        run: ls -l
