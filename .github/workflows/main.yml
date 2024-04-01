@@ -1,6 +1,5 @@
 name: Workflow testing
 
-
 on:
   push:
     branches:
@@ -9,22 +8,24 @@ on:
 jobs:
   experimental-great:
     runs-on: ubuntu-latest
-     env:
+    env:
       MY_ENV: "John Doe"
 
     steps:
       - name: Greet the User
         run: echo "Hello World!"
 
-      # List all files in the current directory for comparison before and after actions/checkout@v2.
-      - run: ls -l
+      - name: List all files in the current directory
+        run: ls -l
 
       - name: Check out our code
         uses: actions/checkout@v3
 
       - name: Show directory after checkout
         run: ls -l
-          - name: Show env vars
+
+      - name: Show env vars
         run: |
           echo "Hello $MY_ENV"
           echo "Hello $GITHUB_ACTOR"
+
